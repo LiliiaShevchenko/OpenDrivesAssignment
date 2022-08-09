@@ -3,6 +3,7 @@ from base_object.error_messages import CustomErrors, CustomExceptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 
+
 class BaseObject:
     """
     base methods
@@ -29,6 +30,19 @@ class BaseObject:
         :return: will return visible element
         """
         return self.wait.until(ec.visibility_of_element_located((self.__selenium_by(find_by), locator)))
+
+    def is_invisible(self, find_by, locator):
+        """
+        :param find_by: to find element by method
+        :param locator: locator of the element
+        :return: will return invisible element
+        """
+        try:
+            element = self.wait.until(ec.invisibility_of_element_located((self.__selenium_by(find_by), locator)))
+            print(element)
+            return element
+        except Exception:
+            raise Exception(CustomExceptions.AbsenceException)
 
     def type(self, find_by, locator, data):
         """

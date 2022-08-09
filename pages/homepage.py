@@ -9,6 +9,7 @@ class Homepage(BaseObject):
     """
     functions for homepage
     """
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -23,3 +24,36 @@ class Homepage(BaseObject):
         expected = test_data
         actual = self.get_text("xpath", l.TASK_NAME)
         self.equal(actual, expected)
+
+    def mark_task_done(self):
+        self.click("xpath", l.MARK_DONE)
+
+    def mark_task_undone(self):
+        self.click("xpath", l.MARK_UNDONE)
+
+    def delete_task(self):
+        self.click("xpath", l.DELETE)
+
+    def verify_absence_done(self):
+        return self.is_invisible("xpath", l.MARK_DONE)
+
+    def verify_absence_undone(self):
+        return self.is_invisible("xpath", l.MARK_UNDONE)
+
+    def verify_absence_task(self):
+        return self.is_invisible("xpath", l.DELETE)
+
+    def assert_absence_done(self):
+        expected_status = True
+        actual_status = self.verify_absence_done()
+        self.equal(actual_status, expected_status)
+
+    def assert_absence_undone(self):
+        expected_status = True
+        actual_status = self.verify_absence_undone()
+        self.equal(actual_status, expected_status)
+
+    def assert_absence_task(self):
+        expected_status = True
+        actual_status = self.verify_absence_task()
+        self.equal(actual_status, expected_status)
