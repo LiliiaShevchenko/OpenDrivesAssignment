@@ -19,4 +19,4 @@ python -m pytest -v -s test_homepage.py
 python -m pytest -v -s -k 'name of test case'
 
 ### Run with reports:
-python -m pytest -v -s --html=report.html
+pytest -v -s --html=report.html
