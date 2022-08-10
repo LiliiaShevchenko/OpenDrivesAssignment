@@ -72,4 +72,5 @@ class BaseObject:
         :param expected: expected 1
         :param actual:  actual 1
         """
-        assert expected == actual, CustomErrors.EQUAL
+        assert expected == actual, CustomErrors.EQUAL.format(expected, actual)
+

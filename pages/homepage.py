@@ -23,7 +23,7 @@ class Homepage(BaseObject):
     def assert_new_task(self):
         expected = test_data
         actual = self.get_text("xpath", l.TASK_NAME)
-        self.equal(actual, expected)
+        self.equal(expected, actual)
 
     def mark_task_done(self):
         self.click("xpath", l.MARK_DONE)
@@ -46,14 +46,14 @@ class Homepage(BaseObject):
     def assert_absence_done(self):
         expected_status = True
         actual_status = self.verify_absence_done()
-        self.equal(actual_status, expected_status)
+        self.equal(expected_status, actual_status)
 
     def assert_absence_undone(self):
         expected_status = True
         actual_status = self.verify_absence_undone()
-        self.equal(actual_status, expected_status)
+        self.equal(expected_status, actual_status)
 
     def assert_absence_task(self):
         expected_status = True
         actual_status = self.verify_absence_task()
-        self.equal(actual_status, expected_status)
+        self.equal(expected_status, actual_status)
